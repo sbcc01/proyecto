@@ -3,43 +3,69 @@
       <div class="col-lg-6 offset-lg-3">
           <div class="card">
               <div class="card-body text-center">
-                  <span class="titulo">{{titulo}}</span>
-                  <form class="mt-3" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+                  <span class="titulo">{{titulo | uppercase}}</span>
+                  <form class="mt-3 tab" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
                       <div class="mb-3">
-                          <input type="text" formControlName="producto" class="form-control form-control-lg"
-                              placeholder="Producto">
+                          <input type="text" formControlName="cliente" class="form-control form-control-lg for" placeholder="Cliente">
+
                           <div class="text-danger"
-                              *ngIf="productoForm.get('producto')?.hasError('required') && productoForm.get('producto')?.touched">
-                              <span>El nombre del producto <strong>es obligatorio</strong></span>
+                              *ngIf="productoForm.get('cliente')?.hasError('required') && productoForm.get('cliente')?.touched">
+
+                              <span>El nombre del cliente <strong>es obligatorio</strong></span>
                           </div>
                       </div>
+
+
                       <div class="mb-3">
-                          <input type="text" formControlName="categoria" class="form-control form-control-lg"
-                              placeholder="Categoria">
+                          <input type="number" formControlName="numero" class="form-control form-control-lg for"
+                              placeholder="Número de celular">
                           <div class="text-danger"
-                              *ngIf="productoForm.get('categoria')?.hasError('required') && productoForm.get('categoria')?.touched">
-                              <span>La categoria <strong>es obligatoria</strong></span>
+                              *ngIf="productoForm.get('numero')?.hasError('required') && productoForm.get('numero')?.touched">
+                              <span>El número de celular<strong>es obligatoria</strong></span>
                           </div>
                       </div>
+
+
                       <div class="mb-3">
-                          <input type="text" formControlName="ubicacion" class="form-control form-control-lg"
-                              placeholder="Ubicacion">
+                          <select formControlName="servicio" class="form-control form-control-lg for"
+                              >
+
+
+                                <option disabled selected value="">Servicios</option>
+                                <option value="dedicado">Dedicado</option>
+                                <option value="simétrico">Simétrico</option>
+                              </select>
+
                           <div class="text-danger"
-                              *ngIf="productoForm.get('ubicacion')?.hasError('required') && productoForm.get('ubicacion')?.touched">
-                              <span>La ubicacion <strong>es obligatoria</strong></span>
+                              *ngIf="productoForm.get('servicio')?.hasError('required') && productoForm.get('servicio')?.touched">
+                              <span>El servicio <strong>es obligatoria</strong></span>
                           </div>
                       </div>
+
+
                       <div class="mb-3">
-                          <input type="number" formControlName="precio" class="form-control form-control-lg"
-                              placeholder="Precio">
+
+                        <select class="form-control form-control-lg for" formControlName="plan" name="singleSelect"
+                        ng-model="data.singleSelect" required>
+
+                              <option disabled selected value="">Plan</option>
+                              <option value="Básico">Básico. 10 mbps Internet Dedicado y Simétrico</option>
+                              <option value="Pymes">Pymes. 20mbps Internet Dedicado y Simétrico</option>
+                              <option value="Gran Empresa">Gran Empresa. Desde 30mbps hasta 200mbps de Internet Dedicado y Simétrico</option>
+                              <option value="Personalizado">Personalizado. Desde 4mbps hasta 500 mbps de Internet Dedicado y Simétrico</option>
+
+                          </select>
+
                           <div class="text-danger"
-                              *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched">
-                              <span>El precio <strong>es obligatorio</strong></span>
+                              *ngIf="productoForm.get('plan')?.hasError('required') && productoForm.get('plan')?.touched">
+                              <span>El Plan <strong>es obligatorio</strong></span>
                           </div>
                       </div>
+
+
                       <div class="mb-3">
-                          <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
-                          <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                        <button routerLink="/" class="btn btn-secondary btn-lg float-start shadow__btnr">VOLVER</button>
+                        <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success btn-lg float-end shadow__btn">ACEPTAR</button>
                       </div>
                   </form>
               </div>

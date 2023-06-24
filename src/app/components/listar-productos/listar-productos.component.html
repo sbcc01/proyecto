@@ -3,25 +3,25 @@
       <div class="col-lg-8 offset-lg-2">
           <div class="card">
               <div class="card-body text-center">
-                  <h1 class="titulo">LISTADO DE PRODUCTOS</h1>
-                  <button class="btn btn-success float-end" routerLink="/crear producto">NUEVO</button>
+                  <h1 class="titulo">SERVICIO WIPS</h1>
+                  <button class="btn btn-success float-end bot shadow__btn" routerLink="/crear producto">NUEVO</button>
                   <!-- modificar las clases  -->
-                  <table *ngIf="listProductos.length > 0" class="table table-striped mt-3">
+                  <table *ngIf="listProductos.length > 0" class="tab table-sm  mt-3" >
                       <thead>
                         <tr>
-                          <th scope="col">Producto</th>
-                          <th scope="col">Categoria</th>
-                          <th scope="col">Ubicacion</th>
-                          <th scope="col">Precio</th>
+                          <th scope="col">Cliente</th>
+                          <th scope="col">Celular</th>
+                          <th scope="col">Servicio</th>
+                          <th scope="col">Plan</th>
                           <th scope="col"></th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="table-group-divider"  >
                         <tr *ngFor="let producto of listProductos">
-                          <td>{{producto.nombre}}</td>
-                          <td>{{producto.categoria}}</td>
-                          <td>{{producto.ubicacion}}</td>
-                          <td>{{producto.precio | currency:'MX$'}}</td>
+                          <td>{{producto.cliente}}</td>
+                          <td>{{producto.numero}}</td>
+                          <td>{{producto.servicio}}</td>
+                          <td>{{producto.plan}}</td>
                           <td>
                             <i [routerLink]="['/editar-producto', producto._id]" class="fas fa-edit text-primary"></i>
 
@@ -31,7 +31,7 @@
                       </tbody>
                     </table>
 
-                    <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
+                    <h4 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay planes para mostrar</h4>
               </div>
           </div>
       </div>

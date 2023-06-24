@@ -10,22 +10,25 @@ import { ProductoService } from 'src/app/services/producto.service';
   templateUrl: './crear-producto.component.html',
   styleUrls: ['./crear-producto.component.css']
 })
-export class CrearProductoComponent implements OnInit{
+export class CrearProductoComponent implements OnInit {
   productoForm: FormGroup;
-  titulo = 'Crear producto';
+  titulo = 'Servicio WISP';
   id: string | null;
-  constructor(private fb: FormBuilder,
-              private router: Router,
-              private toastr: ToastrService,
-              private _productoService: ProductoService,
-              private aRouter: ActivatedRoute) {
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService,
+    private productoService: ProductoService,
+    private route: ActivatedRoute
+  ) {
     this.productoForm = this.fb.group({
-      producto: ['', Validators.required],
-      categoria: ['', Validators.required],
-      ubicacion: ['', Validators.required],
-      precio: ['', Validators.required],
-    })
-    this.id = this.aRouter.snapshot.paramMap.get('id');
+      cliente: ['', Validators.required],
+      numero: ['', Validators.required],
+      servicio: ['', Validators.required],
+      plan: ['', Validators.required],
+    });
+    this.id = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
@@ -33,39 +36,50 @@ export class CrearProductoComponent implements OnInit{
   }
 
   agregarProducto() {
-
     const PRODUCTO: Producto = {
-      nombre: this.productoForm.get('producto')?.value,
-      categoria: this.productoForm.get('categoria')?.value,
-      ubicacion: this.productoForm.get('ubicacion')?.value,
-      precio: this.productoForm.get('precio')?.value,
+      cliente: this.productoForm.get('cliente')?.value,
+      numero: this.productoForm.get('numero')?.value,
+      servicio: this.productoForm.get('servicio')?.value,
+      plan: this.productoForm.get('plan')?.value,
+    };
+
+    if (this.id !== null) {
+      this.productoService.editarProducto(this.id, PRODUCTO).subscribe(
+        () => {
+          this.toastr.info('El plan fue actualizado con exito!', 'plan Actualizado!');
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          console.log(error);
+          this.productoForm.reset();
+        }
+      );
+    } else {
+      console.log(PRODUCTO);
+      this.productoService.guardarProducto(PRODUCTO).subscribe(
+        () => {
+          this.toastr.success('El plan fue registrado con exito!', 'Plan Registrado!');
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          console.log(error);
+          this.productoForm.reset();
+        }
+      );
     }
-
-    console.log(PRODUCTO);
-    this._productoService.guardarProducto(PRODUCTO).subscribe(data => {
-      this.toastr.success('El producto fue registrado con exito!', 'Producto Registrado!');
-      this.router.navigate(['/']);
-    }, error => {
-      console.log(error);
-      this.productoForm.reset();
-    })
-
-
   }
 
   esEditar() {
-
-    if(this.id !== null) {
-      this.titulo = 'Editar producto';
-      this._productoService.obtenerProducto(this.id).subscribe(data => {
+    if (this.id !== null) {
+      this.titulo = 'Editar plan';
+      this.productoService.obtenerProducto(this.id).subscribe((data) => {
         this.productoForm.setValue({
-          producto: data.nombre,
-          categoria: data.categoria,
-          ubicacion: data.ubicacion,
-          precio: data.precio,
-        })
-      })
+          cliente: data.cliente,
+          numero: data.numero,
+          servicio: data.servicio,
+          plan: data.plan,
+        });
+      });
     }
   }
-
 }
