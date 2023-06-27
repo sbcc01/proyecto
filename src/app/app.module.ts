@@ -12,13 +12,15 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CrearProductoComponent,
-    ListarProductosComponent
+    ListarProductosComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

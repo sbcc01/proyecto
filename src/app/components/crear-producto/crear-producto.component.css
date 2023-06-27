@@ -1,90 +1,54 @@
-.text-danger {
-  text-align: start;
-  margin-left: 7px;
-}
-.titulo{
-  font-size: 30px;
-
-}
-.card{
-  background: rgba(63, 94, 251, 0);
-  border: 0;
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-
-.tab{
-  font-size: larger;
-  color: rgb(0, 0, 0);
-  background-color: rgba(80, 137, 187, 0);
-  margin: 10%;
-  width: 80%;
-}
-
-
-.for{
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px #fff solid;
-  display: block;
-  width: 100%;
-  padding: 15px 0;
-  font-size: 18px;
-  color: #2c2b2bfd;
-}
-
-.shadow__btn {
-  margin: -10% 70%;
-  padding: 10px 20px;
-  border: none;
-  font-size: 14px;
+/* Estilos del encabezado */
+header {
+  background-color: #333;
   color: #fff;
-  border-radius: 7px;
-  letter-spacing: 4px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
+  padding: 20px;
 }
 
-.shadow__btn {
-  background: #189b18;
-  box-shadow: 0 0 25px #189b18;
+header h1 {
+  margin: 0;
 }
 
-.shadow__btn:hover {
-  box-shadow: 0 0 5px #189b18,
-              0 0 25px #189b18,
-              0 0 50px #189b18,
-              0 0 100px #189b18;
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.shadow__btnr {
-  margin-left: 70%;
-  padding: 10px 20px;
-  border: none;
-  font-size: 14px;
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
   color: #fff;
-  border-radius: 7px;
-  letter-spacing: 4px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
+  text-decoration: none;
 }
 
-.shadow__btnr {
-  background: #535353;
-  box-shadow: 0 0 25px #535353;
+/* Estilos de los servicios */
+#services {
+  padding: 20px;
 }
 
-.shadow__btnr:hover {
-  box-shadow: 0 0 5px #535353,
-              0 0 25px #535353,
-              0 0 50px #535353,
-              0 0 100px #535353;
+.service {
+  margin-bottom: 20px;
 }
 
+.service img {
+  width: 200px;
+}
 
-
-
-
+/* Estilos del pie de página */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
